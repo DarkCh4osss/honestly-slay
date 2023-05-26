@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
+// import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Layout from "../components/Layout/Layout";
 import {
@@ -39,7 +39,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <img src={profilePic} alt="" />
+      <img src={profilePic} alt="Profile picture" />
     </Layout>
   );
 }
