@@ -8,11 +8,11 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (
-    <div className="flex h-full mt-4 max-w-4xl mx-auto mb-24 scroll-smooth">
-      <div className="flex-auto w-1/4 justify-items-center">
+    <div className="md:flex mt-4 max-w-4xl mx-auto gap-6 mb-24 scroll-smooth">
+      <div className="fixed md:static w-full bottom-0 md:w-3/12 -mb-5">
         <Navbar />
       </div>
-      <div className="flex-auto w-9/12 justify-items-center">{children}</div>
+      <div className="mx-4 md:mx-0 md:w-9/12">{children}</div>
     </div>
   );
 };

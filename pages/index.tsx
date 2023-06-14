@@ -10,12 +10,15 @@ import {
 } from "@supabase/auth-helpers-react";
 import LoginPage from "./login";
 import { useEffect, useState } from "react";
+import Card from "@/components/Cards/Card";
 
 export default function Home() {
   const supabase: SupabaseClient = useSupabaseClient();
   const session: Session = useSession()!;
   const [profile, setProfile] = useState(null);
   const [profilePic, setProfilePic] = useState("");
+  const [content, setContent] = useState("");
+  const [posts, setPosts] = useState<any>();
 
   useEffect(() => {
     if (!session?.user?.id) {
@@ -33,13 +36,48 @@ export default function Home() {
       });
   }, [session?.user?.id]);
 
+  function createPost() {
+    supabase
+      .from("posts")
+      .insert({
+        author: session.user.id,
+        content,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+  }
+
+  function fetchPost() {
+    supabase
+      .from("posts")
+      .select("id, content, created_at, profiles(id, avatar, name)")
+      .is("parent", null)
+      .order("created_at", { ascending: false })
+      .then((result) => {
+        console.log(result);
+        setPosts(result.data);
+      });
+  }
+
   if (!session) {
     return <LoginPage />;
   }
 
   return (
-    <Layout>
-      <img src={profilePic} alt="Profile picture" />
-    </Layout>
+    <>
+      <Head>
+        <title>Home / Honestly Slay</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;800&display=swap"
+          rel="stylesheet"
+        ></link>
+      </Head>
+      <Layout>
+        <Card>posts</Card>
+      </Layout>
+    </>
   );
 }
