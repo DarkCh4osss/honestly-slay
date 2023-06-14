@@ -1,6 +1,4 @@
 import Head from "next/head";
-// import Image from "next/image";
-import styles from "@/styles/Home.module.css";
 import Layout from "../components/Layout/Layout";
 import {
   Session,
@@ -10,7 +8,6 @@ import {
 } from "@supabase/auth-helpers-react";
 import LoginPage from "./login";
 import { useEffect, useState } from "react";
-import Card from "@/components/Cards/Card";
 
 export default function Home() {
   const supabase: SupabaseClient = useSupabaseClient();
@@ -68,16 +65,8 @@ export default function Home() {
     <>
       <Head>
         <title>Home / Honestly Slay</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;800&display=swap"
-          rel="stylesheet"
-        ></link>
       </Head>
-      <Layout>
-        <Card>posts</Card>
-      </Layout>
+      <Layout />
     </>
   );
 }

@@ -1,0 +1,50 @@
+.bg {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 500px;
+  height: 250px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem;
+}
+
+.title {
+  display: inline-block;
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.links {
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  text-align: center;
+  padding: 2rem 0rem;
+}
+
+.links li {
+  padding: 1rem 2rem;
+  width: 100%;
+  height: 100%;
+}
+
+.icon {
+  width: 70%;
+  height: 50%;
+  font-size: 4rem;
+}

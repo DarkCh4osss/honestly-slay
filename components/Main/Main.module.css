@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.container .row {
+  display: flex;
+  width: 100%;
+}
+
+.primaryColumn {
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+}
