@@ -1,3 +1,10 @@
+:root {
+  --primary: #ffafcc;
+  --bg: #e7e7e8;
+  --primary-hover: #fd94bb;
+  --border-color: #dcd4d4;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -47,7 +54,7 @@ li {
 
 .primary {
   border: none;
-  background: #ffafcc;
+  background: var(--primary);
   border-radius: 20px;
   transition: all 0.2s ease-in-out;
   color: white;
@@ -55,5 +62,5 @@ li {
 }
 
 .primary:hover {
-  background: #fd94bb;
+  background: var(--primary-hover);
 }

@@ -10,7 +10,11 @@
 }
 
 .primaryColumn {
-  border-left: 1px solid white;
-  border-right: 1px solid white;
-  border-bottom: 1px solid white;
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  flex: 60%;
+}
+
+.secondaryColumn {
+  flex: 40%;
 }

@@ -12,9 +12,9 @@
 }
 
 .nav {
-  flex: 30%;
+  flex: 25%;
 }
 
 .main {
-  flex: 70%;
+  flex: 75%;
 }
