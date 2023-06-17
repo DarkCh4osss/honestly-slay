@@ -4,7 +4,11 @@ import Navbar from "../Navbar/Navbar";
 import Main from "../Main/Main";
 import styles from "./Layout.module.css";
 
-const Layout = () => {
+interface Props {
+  title: string;
+}
+
+const Layout: React.FC<Props> = ({ title }) => {
   return (
     <div className={styles.container}>
       <div className={styles.row}>
@@ -12,7 +16,7 @@ const Layout = () => {
           <Navbar />
         </div>
         <div className={`${styles.main} text-center`}>
-          <Main />
+          <Main title={title} />
         </div>
       </div>
     </div>

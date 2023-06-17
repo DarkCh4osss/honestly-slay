@@ -8,6 +8,7 @@ import {
 } from "@supabase/auth-helpers-react";
 import LoginPage from "./login";
 import { useEffect, useState } from "react";
+import { UserContext } from "../contexts/UserContext";
 
 export default function Home() {
   const supabase: SupabaseClient = useSupabaseClient();
@@ -33,40 +34,16 @@ export default function Home() {
       });
   }, [session?.user?.id]);
 
-  function createPost() {
-    supabase
-      .from("posts")
-      .insert({
-        author: session.user.id,
-        content,
-      })
-      .then((res) => {
-        console.log(res);
-      });
-  }
-
-  function fetchPost() {
-    supabase
-      .from("posts")
-      .select("id, content, created_at, profiles(id, avatar, name)")
-      .is("parent", null)
-      .order("created_at", { ascending: false })
-      .then((result) => {
-        console.log(result);
-        setPosts(result.data);
-      });
-  }
-
   if (!session) {
     return <LoginPage />;
   }
 
   return (
-    <>
+    <UserContext.Provider value={{ profile }}>
       <Head>
         <title>Home / Honestly Slay</title>
       </Head>
-      <Layout />
-    </>
+      <Layout title="Home" />
+    </UserContext.Provider>
   );
 }
