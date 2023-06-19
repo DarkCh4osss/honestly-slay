@@ -1,0 +1,106 @@
+.cardContainer {
+  display: flex;
+  width: 100%;
+  padding: 0.4rem 1.6rem;
+  padding-top: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  flex-direction: column;
+}
+
+.pfpImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.postDetails {
+  text-align: left;
+  padding-top: 0.4rem;
+  width: 100%;
+}
+
+.postDetails p {
+  padding-bottom: 1rem;
+  font-size: 0.93rem;
+}
+
+.cardAction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.cardAction button {
+  padding: 0.5rem 1.5rem;
+  font-size: 1.25rem;
+}
+
+.cardAction ul {
+  display: flex;
+}
+
+.cardAction li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  color: gray;
+  cursor: pointer;
+}
+
+.likeBtn:hover {
+  background-color: var(--like-hover);
+}
+.commentBtn:hover {
+  background-color: var(--comment-hover);
+}
+.shareBtn:hover {
+  background-color: var(--share-hover);
+}
+
+.userInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.usernameInfo {
+  width: 100%;
+  display: flex;
+  padding-left: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.fullName:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.userName {
+  font-size: smaller;
+  color: gray;
+  padding-left: 0.2rem;
+}
+
+.postImgs {
+  padding-bottom: 1rem;
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+}
+
+.postImg img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.postMenu {
+  font-size: 1.7rem;
+  cursor: pointer;
+}

@@ -1,7 +1,7 @@
 .formContainer {
   display: flex;
   width: 100%;
-  height: 120px;
+  /* height: 120px; */
   padding: 0.4rem 1.6rem;
   padding-top: 1rem;
   border-bottom: 1px solid var(--border-color);
@@ -35,7 +35,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 6rem;
+  height: 3rem;
   width: 100%;
 }
 
@@ -62,4 +62,28 @@
 
 .formAction li:hover {
   background-color: var(--like-hover);
+}
+
+.formAction label {
+  cursor: pointer;
+}
+
+.uploadedImgs {
+  padding: 1rem 0;
+  display: flex;
+  gap: 1rem;
+}
+.uploadedImg {
+  text-align: left;
+  /* padding: 1rem 0; */
+}
+
+.uploadedImg img {
+  width: auto;
+  height: 100px;
+  border-radius: 15px;
+}
+
+.loader {
+  padding-top: 2rem;
 }

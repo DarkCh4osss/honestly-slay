@@ -2,8 +2,11 @@
   --primary: #ffafcc;
   --bg: #e7e7e8;
   --primary-hover: #fd94bb;
+  --primary-disabled: #cd7e9b;
   --border-color: #dcd4d4;
   --like-hover: #fee7f2;
+  --share-hover: #baf8a0;
+  --comment-hover: #a0c3fb;
 }
 
 * {
@@ -64,4 +67,13 @@ li {
 
 .primary:hover {
   background: var(--primary-hover);
+}
+
+.primary.disabled {
+  background: var(--primary-disabled);
+  cursor: default;
+}
+
+.hidden {
+  display: none;
 }
