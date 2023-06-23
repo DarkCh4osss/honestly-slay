@@ -1,7 +1,41 @@
+import Layout from "@/components/Layout/Layout";
+import Main from "@/components/Main/Main";
+import Profile from "@/components/Profile/Profile";
+import { UserContext, UserContextProvider } from "@/contexts/UserContext";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
-import React from "react";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import React, { use, useEffect, useState } from "react";
+// import styles from "../styles/profile.module.css";
 
 const ProfilePage = () => {
+  const router = useRouter();
+  const { asPath: pathname } = router;
+  const userId = router.query.id;
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    if (!userId) {
+      return;
+    }
+    fetchUser();
+  }, [userId]);
+
+  function fetchUser() {
+    supabase
+      .from("profiles")
+      .select()
+      .eq("id", userId)
+      .then((result: any) => {
+        if (result.error) {
+          throw result.error;
+        }
+        if (result.data) {
+          setProfile(result.data[0]);
+        }
+      });
+  }
+
   const supabase = useSupabaseClient();
   const session = useSession();
 
@@ -10,11 +44,16 @@ const ProfilePage = () => {
   }
 
   return (
-    <div>
-      <a className="primary" onClick={logout}>
-        Logout
-      </a>
-    </div>
+    <UserContextProvider>
+      <Head>
+        <title>{profile?.username} / Honestly Slay</title>
+      </Head>
+      <Layout
+        main={
+          <Main title={"Home"} primaryCol={<Profile profile={profile} />} />
+        }
+      />
+    </UserContextProvider>
   );
 };
 

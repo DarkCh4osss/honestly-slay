@@ -35,6 +35,11 @@ const PostCard: React.FC<Props> = ({
     <div className={`${styles.cardContainer}`}>
       <div className={styles.userInfo}>
         <img
+          onError={({ currentTarget }) => {
+            currentTarget.onerror = null;
+            currentTarget.src =
+              "https://dumocrzhnglgqbahzekv.supabase.co/storage/v1/object/public/photos/default-pfp.jpg";
+          }}
           src={profile.avatar_url}
           alt="Profile Picture"
           className={styles.pfpImage}
@@ -58,7 +63,7 @@ const PostCard: React.FC<Props> = ({
           <div className={styles.postImgs}>
             {photos.length > 0 &&
               photos.map((photo: any) => (
-                <div className={styles.postImg}>
+                <div key={photo} className={styles.postImg}>
                   <img src={photo} alt="" />
                 </div>
               ))}

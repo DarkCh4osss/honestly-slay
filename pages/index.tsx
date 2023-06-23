@@ -9,6 +9,8 @@ import {
 import LoginPage from "./login";
 import { useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
+import Main from "@/components/Main/Main";
+import PrimaryFeed from "@/components/PrimaryFeed/PrimaryFeed";
 
 export default function Home() {
   const supabase: SupabaseClient = useSupabaseClient();
@@ -43,7 +45,9 @@ export default function Home() {
       <Head>
         <title>Home / Honestly Slay</title>
       </Head>
-      <Layout title="Home" />
+      <Layout
+        main={<Main title={"Home"} primaryCol={<PrimaryFeed title="Home" />} />}
+      />
     </UserContext.Provider>
   );
 }

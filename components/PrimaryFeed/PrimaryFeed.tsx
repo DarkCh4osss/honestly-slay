@@ -37,7 +37,7 @@ const PrimaryFeed: React.FC<Props> = ({ title }) => {
       </div>
       <PostForm onPost={fetchPost} />
       {posts?.length > 0 &&
-        posts.map((post: any) => <PostCard key={post.created_at} {...post} />)}
+        posts.map((post: any) => <PostCard key={post.id} {...post} />)}
     </>
   );
 };

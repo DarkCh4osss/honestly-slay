@@ -1,0 +1,97 @@
+.profileInfo {
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.profileBanner {
+  width: 100%;
+}
+
+.profileAvatarSect {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0rem 1rem;
+}
+
+.profileAvatar {
+  border-radius: 50%;
+  border: 5px solid white;
+  position: absolute;
+  transform: translate(10%, -50%);
+}
+.profileInfoEdit {
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.profileBannerEdit {
+  width: 100%;
+}
+
+.profileAvatarSectEdit {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0rem 1rem;
+}
+
+.profileAvatarEdit {
+  border-radius: 50%;
+  border: 5px solid white;
+  position: absolute;
+  transform: translate(10%, -50%);
+}
+
+.editBtn {
+  border-radius: 15px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.editBtnNo {
+  opacity: 0;
+}
+
+.editBtn:hover {
+  background: var(--border-color);
+}
+
+.profile {
+  padding: 2rem 2rem;
+  text-align: left;
+}
+
+.profileName {
+  font-size: larger;
+  font-weight: 600;
+}
+
+.profileUsername {
+  font-size: small;
+  font-weight: 300;
+  color: gray;
+  padding-bottom: 1rem;
+}
+
+.profileLoc {
+  font-weight: 300;
+  color: gray;
+  padding-top: 1rem;
+}
+
+.profileLoc svg {
+  padding-right: 0.2rem;
+}
+
+.profile input {
+  width: 100%;
+  padding: 0.5rem 0.3rem;
+}

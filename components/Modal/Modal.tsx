@@ -9,7 +9,7 @@ interface Props {
 
 const Modal: React.FC<Props> = ({ title, content, footer, closeModal }) => {
   return (
-    <div onClick={() => closeModal(false)} className={styles.modalBg}>
+    <div className={styles.modalBg}>
       <div className={styles.modalContainer}>
         <div className={styles.title}>{title}</div>
         <div className={styles.content}>{content}</div>

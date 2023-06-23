@@ -10,6 +10,9 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;800&display=swap"
           rel="stylesheet"
         ></link>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="manifest" href="manifest.json" />
+        <meta name="theme-color" content="#ffafcc" />
       </Head>
       <body>
         <Main />

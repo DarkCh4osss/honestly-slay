@@ -1,18 +1,18 @@
 import React from "react";
 import styles from "./Main.module.css";
 import Sidenav from "../Sidenav/Sidenav";
-import PrimaryFeed from "../PrimaryFeed/PrimaryFeed";
 
 interface Props {
   title: string;
+  primaryCol: any;
 }
 
-const Main: React.FC<Props> = ({ title }) => {
+const Main: React.FC<Props> = ({ title, primaryCol }) => {
   return (
     <main className={styles.container}>
       <div className={styles.row}>
         <div className={`text-center ${styles.primaryColumn}`}>
-          <PrimaryFeed title={title} />
+          {primaryCol}
         </div>
         <div className={`${styles.secondaryColumn}`}>
           <Sidenav />

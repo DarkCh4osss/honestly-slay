@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./PostForm.module.css";
-import DefaultPfp from "../../public/img/default-pfp.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceSmile, faImage } from "@fortawesome/free-solid-svg-icons";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
@@ -75,8 +74,15 @@ const PostForm: React.FC<Props> = ({ onPost }) => {
   return (
     <div className={`${styles.formContainer}`}>
       <img
+        onError={({ currentTarget }) => {
+          currentTarget.onerror = null;
+          currentTarget.src =
+            "https://dumocrzhnglgqbahzekv.supabase.co/storage/v1/object/public/photos/default-pfp.jpg";
+        }}
         src={
-          profilePic != null ? profilePic : "../../public/img/default-pfp.jpg"
+          profilePic != null
+            ? profilePic
+            : "https://dumocrzhnglgqbahzekv.supabase.co/storage/v1/object/public/photos/default-pfp.jpg"
         }
         alt="Profile Picture"
         className={styles.pfpImage}
@@ -97,7 +103,7 @@ const PostForm: React.FC<Props> = ({ onPost }) => {
           <div className={styles.uploadedImgs}>
             {uploads.length > 0 &&
               uploads.map((upload) => (
-                <div className={styles.uploadedImg}>
+                <div key={upload} className={styles.uploadedImg}>
                   <img src={upload} alt="uploaded image" />
                 </div>
               ))}

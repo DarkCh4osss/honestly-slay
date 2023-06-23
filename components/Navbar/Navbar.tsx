@@ -14,7 +14,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Modal from "../Modal/Modal";
 import ToggleMode from "../ToggleMode/ToggleMode";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
 interface Props {
   // username: string;
@@ -23,9 +24,25 @@ interface Props {
 const Navbar: React.FC<Props> = ({}) => {
   const [openModal, setOpenModal] = useState(false);
   const [openModalDisplay, setOpenModalDisplay] = useState(false);
+  const [profile, setProfile] = useState(null);
 
   const supabase = useSupabaseClient();
   const session = useSession();
+
+  useEffect(() => {
+    if (!session?.user?.id) {
+      return;
+    }
+    supabase
+      .from("profiles")
+      .select()
+      .eq("id", session.user.id)
+      .then((result: any) => {
+        if (result.data.length) {
+          setProfile(result.data[0]);
+        }
+      });
+  }, [session?.user?.id]);
 
   async function logout() {
     await supabase.auth.signOut();
@@ -37,14 +54,17 @@ const Navbar: React.FC<Props> = ({}) => {
         <h1>Honestly, Slay</h1>
         <ul className={styles.navLinks}>
           <li>
-            <a href="#">
+            <Link href="/">
               <FontAwesomeIcon icon={faHouse} /> Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#">
+            {/* <a href={"profile/" + "profile?.id"}>
+              
+            </a> */}
+            <Link href={``}>
               <FontAwesomeIcon icon={faBell} /> Notifications
-            </a>
+            </Link>
           </li>
           <li>
             <a href="#">
@@ -52,9 +72,9 @@ const Navbar: React.FC<Props> = ({}) => {
             </a>
           </li>
           <li>
-            <a href="../../profile">
+            <Link href={`profile/${profile?.id}`}>
               <FontAwesomeIcon icon={faUser} /> Profile
-            </a>
+            </Link>
           </li>
           <li>
             <a onClick={() => setOpenModal(true)}>
