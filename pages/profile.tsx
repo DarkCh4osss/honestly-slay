@@ -8,11 +8,15 @@ import { useRouter } from "next/router";
 import React, { use, useEffect, useState } from "react";
 // import styles from "../styles/profile.module.css";
 
+interface Profile {
+  username: string;
+}
+
 const ProfilePage = () => {
   const router = useRouter();
   const { asPath: pathname } = router;
   const userId = router.query.id;
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState<Profile>();
 
   useEffect(() => {
     if (!userId) {

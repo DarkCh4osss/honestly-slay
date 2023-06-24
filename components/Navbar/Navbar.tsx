@@ -23,10 +23,14 @@ interface Props {
   // username: string;
 }
 
+interface Profile {
+  id: string;
+}
+
 const Navbar: React.FC<Props> = ({}) => {
   const [openModal, setOpenModal] = useState(false);
   const [openModalDisplay, setOpenModalDisplay] = useState(false);
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState<Profile>();
 
   const supabase = useSupabaseClient();
   const session = useSession();
