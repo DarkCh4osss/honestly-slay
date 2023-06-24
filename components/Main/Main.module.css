@@ -16,5 +16,24 @@
 }
 
 .secondaryColumn {
-  flex: 40%;
+  flex: auto;
+}
+
+@media only screen and (max-width: 1200px) {
+  .primaryColumn {
+    flex: 70%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 100vw;
+  }
+  .secondaryColumn {
+    display: none;
+  }
+
+  .primaryColumn {
+    flex: 100%;
+  }
 }

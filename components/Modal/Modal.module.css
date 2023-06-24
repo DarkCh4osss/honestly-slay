@@ -1,3 +1,7 @@
+/* .fixedModal {
+  position: fixed;
+} */
+
 .modalBg {
   width: 100vw;
   height: 100vh;
@@ -21,13 +25,22 @@
   flex-direction: column;
   padding: 2.5rem;
   z-index: 100;
+  position: fixed;
+  z-index: 300;
 }
 
 .title {
-  display: inline-block;
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 1rem;
   text-align: center;
   font-size: 1.7rem;
   font-weight: 800;
+}
+
+.title span {
+  cursor: pointer;
+  font-weight: 400;
 }
 
 .content {

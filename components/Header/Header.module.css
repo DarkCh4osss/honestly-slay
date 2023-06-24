@@ -4,8 +4,69 @@
   padding-bottom: 1rem;
   height: 100%;
   border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
 }
 
 .headerSect h3 {
   font-weight: 500;
+}
+
+.burger {
+  padding-right: 2rem;
+  display: none;
+  cursor: pointer;
+}
+
+.nav {
+  position: absolute;
+  background: white;
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  z-index: 100;
+  /* display: none; */
+  /* top: -100vh; */
+  transform: translateY(-100vh);
+  transition: all 0.2s ease-in-out;
+}
+
+.nav h1 {
+  padding-bottom: 2rem;
+}
+
+.navLinks {
+  width: 100%;
+}
+
+.navLinks li {
+  padding: 0.5rem 0rem;
+  width: 100%;
+}
+
+.navLinks li a {
+  border: none;
+  background-color: inherit;
+  font-size: 1.6rem;
+  transition: all 0.2s ease-in-out;
+  border-radius: 20px;
+  padding: 0.5rem;
+}
+
+.navLinks li a:hover {
+  background: #e7e7e8;
+}
+
+.responsive_nav {
+  /* transform: translateY(100vh) !important; */
+  transform: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .burger {
+    display: unset;
+  }
 }

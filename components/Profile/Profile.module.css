@@ -3,8 +3,15 @@
   border-bottom: 1px solid var(--border-color);
 }
 
+.bannerContainer {
+  height: 213.233px;
+  padding-bottom: 1rem;
+}
+
 .profileBanner {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .profileAvatarSect {
@@ -26,8 +33,14 @@
   border-bottom: 1px solid var(--border-color);
 }
 
+.bannerEditContainer {
+  height: 140px;
+}
 .profileBannerEdit {
   width: 100%;
+  /* height: 100%; */
+  height: 140px;
+  object-fit: cover;
 }
 
 .profileAvatarSectEdit {
@@ -46,6 +59,7 @@
 }
 
 .editBtn {
+  /* margin-top: ; */
   border-radius: 15px;
   border: 1px solid var(--border-color);
   background: transparent;
@@ -94,4 +108,111 @@
 .profile input {
   width: 100%;
   padding: 0.5rem 0.3rem;
+}
+
+.doneBtn,
+.cancelBtn {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+}
+
+.doneBtn {
+  margin-right: 1rem;
+}
+
+.bannerWrap {
+  width: 100%;
+  position: relative;
+}
+
+.bannerOverlay {
+  position: absolute;
+  width: 100%;
+  height: 95%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.269);
+}
+
+.bannerOverlay ul {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.bannerOverlay li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  background: rgba(0, 0, 0, 0.533);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.bannerOverlay li:hover {
+  background: rgba(46, 46, 46, 0.533);
+}
+
+.bannerOverlay svg {
+  color: white;
+  font-size: larger;
+}
+.bannerOverlay label {
+  cursor: pointer;
+}
+
+.avatarWrap {
+  width: 100%;
+  position: relative;
+  z-index: 200;
+}
+
+.avatarWrap img {
+  display: block;
+}
+
+.avatarOverlay {
+  border-radius: 50px;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.269);
+  padding: 0 1rem;
+  transform: translate(15%, -50%);
+}
+
+.avatarOverlay ul {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.avatarOverlay li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  background: rgba(0, 0, 0, 0.533);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.avatarOverlay li:hover {
+  background: rgba(46, 46, 46, 0.533);
+}
+
+.avatarOverlay svg {
+  color: white;
+  font-size: larger;
+}
+.avatarOverlay label {
+  cursor: pointer;
 }

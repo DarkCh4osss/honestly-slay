@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <UserContext.Provider value={{ profile }}>
       <Head>
-        <title>Home / Honestly Slay</title>
+        <title>Home / honestly, slay</title>
       </Head>
       <Layout
         main={<Main title={"Home"} primaryCol={<PrimaryFeed title="Home" />} />}

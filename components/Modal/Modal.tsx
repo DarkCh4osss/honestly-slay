@@ -9,15 +9,15 @@ interface Props {
 
 const Modal: React.FC<Props> = ({ title, content, footer, closeModal }) => {
   return (
-    <div className={styles.modalBg}>
-      <div className={styles.modalContainer}>
-        <div className={styles.title}>{title}</div>
-        <div className={styles.content}>{content}</div>
-        {footer && (
-          <div onClick={() => closeModal(false)} className={styles.footer}>
-            {footer}
+    <div className={styles.fixedModal}>
+      <div className={styles.modalBg}>
+        <div className={styles.modalContainer}>
+          <div className={styles.title}>
+            <span onClick={() => closeModal(false)}>X</span> {title}
           </div>
-        )}
+          <div className={styles.content}>{content}</div>
+          {footer && <div className={styles.footer}>{footer}</div>}
+        </div>
       </div>
     </div>
   );

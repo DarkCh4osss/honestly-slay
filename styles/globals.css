@@ -69,6 +69,19 @@ li {
   background: var(--primary-hover);
 }
 
+.cancel {
+  border: none;
+  background: black;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+  color: white;
+  cursor: pointer;
+}
+
+.cancel:hover {
+  background: rgb(46, 46, 46);
+}
+
 .primary.disabled {
   background: var(--primary-disabled);
   cursor: default;
@@ -76,4 +89,9 @@ li {
 
 .hidden {
   display: none;
+}
+
+.responsive_nav {
+  /* transform: translateY(100vh) !important; */
+  transform: none;
 }

@@ -16,5 +16,42 @@
 }
 
 .main {
-  flex: 75%;
+  flex: auto;
+}
+
+@media only screen and (max-width: 1320px) {
+  .container {
+    padding: 2rem 10rem;
+    width: 100%;
+  }
+  .nav {
+    flex: 10%;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .container {
+    padding: 2rem 5rem;
+    width: 100%;
+  }
+  .nav {
+    flex: 5%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    padding: 2rem 3rem;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    padding: 2rem 0;
+    width: 100%;
+  }
+
+  .main {
+    flex: 100%;
+  }
 }

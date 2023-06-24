@@ -14,8 +14,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Modal from "../Modal/Modal";
 import ToggleMode from "../ToggleMode/ToggleMode";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import logo from "../../public/img/logo.png";
 
 interface Props {
   // username: string;
@@ -51,7 +53,7 @@ const Navbar: React.FC<Props> = ({}) => {
   return (
     <>
       <nav className={styles.nav}>
-        <h1>Honestly, Slay</h1>
+        <h1>honestly, slay</h1>
         <ul className={styles.navLinks}>
           <li>
             <Link href="/">
@@ -88,6 +90,33 @@ const Navbar: React.FC<Props> = ({}) => {
             <button className={`primary`} onClick={logout}>
               Temp logout
             </button>
+          </li>
+        </ul>
+        <ul className={`${styles.navLinks} ${styles.navResponsive}`}>
+          <li>
+            <Link href="/">
+              <FontAwesomeIcon icon={faHouse} />
+            </Link>
+          </li>
+          <li>
+            <Link href={``}>
+              <FontAwesomeIcon icon={faBell} />
+            </Link>
+          </li>
+          <li>
+            <a href="#">
+              <FontAwesomeIcon icon={faEnvelope} />
+            </a>
+          </li>
+          <li>
+            <Link href={`profile/${profile?.id}`}>
+              <FontAwesomeIcon icon={faUser} />
+            </Link>
+          </li>
+          <li>
+            <a onClick={() => setOpenModal(true)}>
+              <FontAwesomeIcon icon={faEllipsis} />
+            </a>
           </li>
         </ul>
       </nav>

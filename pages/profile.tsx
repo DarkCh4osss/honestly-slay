@@ -46,12 +46,10 @@ const ProfilePage = () => {
   return (
     <UserContextProvider>
       <Head>
-        <title>{profile?.username} / Honestly Slay</title>
+        <title>{profile?.username} / honestly, slay</title>
       </Head>
       <Layout
-        main={
-          <Main title={"Home"} primaryCol={<Profile profile={profile} />} />
-        }
+        main={<Main title={""} primaryCol={<Profile profile={profile} />} />}
       />
     </UserContextProvider>
   );
