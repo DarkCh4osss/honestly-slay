@@ -21,7 +21,8 @@
 .nav {
   position: absolute;
   background: var(--bg);
-  height: 50vh;
+  /* height: 50vh; */
+  height: 60vh;
   width: 100%;
   display: flex;
   /* justify-content: center; */
