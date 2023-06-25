@@ -59,7 +59,7 @@
   justify-content: center;
 }
 
-@media only screen and (max-width: 370px) {
+@media only screen and (max-width: 375px) {
   .modalContainer {
     width: 300px;
   }
