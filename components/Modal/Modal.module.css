@@ -1,25 +1,25 @@
 /* .fixedModal {
-  position: fixed;
+  height: 100%;
 } */
 
 .modalBg {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background: rgba(0, 0, 0, 0.258);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* overflow: hidden !important; */
+  z-index: 1000;
 }
 
 .modalContainer {
   width: 500px;
   /* height: 500px; */
   border-radius: 12px;
-  background: white;
+  background: var(--bg);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   flex-direction: column;
@@ -27,6 +27,7 @@
   z-index: 100;
   position: fixed;
   z-index: 300;
+  color: var(--font);
 }
 
 .title {
@@ -56,4 +57,10 @@
 .footer {
   display: flex;
   justify-content: center;
+}
+
+@media only screen and (max-width: 370px) {
+  .modalContainer {
+    width: 300px;
+  }
 }

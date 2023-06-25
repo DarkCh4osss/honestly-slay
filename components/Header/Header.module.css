@@ -20,7 +20,7 @@
 
 .nav {
   position: absolute;
-  background: white;
+  background: var(--bg);
   height: 50vh;
   width: 100%;
   display: flex;
@@ -57,12 +57,18 @@
 }
 
 .navLinks li a:hover {
-  background: #e7e7e8;
+  background: var(--bg);
 }
 
 .responsive_nav {
   /* transform: translateY(100vh) !important; */
   transform: none;
+}
+
+.info {
+  color: var(--primary);
+  text-decoration: underline;
+  font-weight: 800;
 }
 
 @media only screen and (max-width: 768px) {

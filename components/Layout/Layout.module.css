@@ -55,3 +55,9 @@
     flex: 100%;
   }
 }
+/* @media only screen and (max-width: 670px) {
+  .main {
+    padding-right: 20rem;
+    width: 100%;
+  }
+} */

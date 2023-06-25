@@ -10,6 +10,7 @@ import React, { use, useEffect, useState } from "react";
 
 interface Profile {
   username: string;
+  full_name: string;
 }
 
 const ProfilePage = () => {
@@ -50,7 +51,9 @@ const ProfilePage = () => {
   return (
     <UserContextProvider>
       <Head>
-        <title>{profile?.username} / honestly, slay</title>
+        <title>
+          {profile?.full_name} (@{profile?.username}) / honestly, slay
+        </title>
       </Head>
       <Layout
         main={<Main title={""} primaryCol={<Profile profile={profile} />} />}

@@ -21,6 +21,7 @@ const PrimaryFeed: React.FC<Props> = ({ title }) => {
       .select(
         "id, content, created_at, photos, profiles(id, avatar_url, username, full_name)"
       )
+      .is("parent", null)
       .order("created_at", { ascending: false })
       .then((result) => {
         setPosts(result.data);

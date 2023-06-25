@@ -25,6 +25,8 @@
 .postDetails input {
   font-size: 1.4rem;
   border: none;
+  background: var(--bg);
+  color: var(--input);
 }
 
 .postDetails input:focus {

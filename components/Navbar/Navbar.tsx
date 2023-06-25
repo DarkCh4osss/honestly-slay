@@ -2,7 +2,10 @@ import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import styles from "./Navbar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faArrowRightFromBracket,
   faBell,
+  faBookmark,
+  faCircleInfo,
   faCircleQuestion,
   faEllipsis,
   faEnvelope,
@@ -30,6 +33,7 @@ interface Profile {
 const Navbar: React.FC<Props> = ({}) => {
   const [openModal, setOpenModal] = useState(false);
   const [openModalDisplay, setOpenModalDisplay] = useState(false);
+  const [openModalInfo, setOpenModalInfo] = useState(false);
   const [profile, setProfile] = useState<Profile>();
 
   const supabase = useSupabaseClient();
@@ -68,8 +72,8 @@ const Navbar: React.FC<Props> = ({}) => {
             {/* <a href={"profile/" + "profile?.id"}>
               
             </a> */}
-            <Link href={``}>
-              <FontAwesomeIcon icon={faBell} /> Notifications
+            <Link href={`/saved`}>
+              <FontAwesomeIcon icon={faBookmark} /> Saved
             </Link>
           </li>
           <li>
@@ -78,7 +82,7 @@ const Navbar: React.FC<Props> = ({}) => {
             </a>
           </li>
           <li>
-            <Link href={`profile/${profile?.id}`}>
+            <Link href={`/profile/${profile?.id}`}>
               <FontAwesomeIcon icon={faUser} /> Profile
             </Link>
           </li>
@@ -89,11 +93,6 @@ const Navbar: React.FC<Props> = ({}) => {
           </li>
           <li>
             <button className={`primary ${styles.postBtn}`}>Post!</button>
-          </li>
-          <li>
-            <button className={`primary`} onClick={logout}>
-              Temp logout
-            </button>
           </li>
         </ul>
         <ul className={`${styles.navLinks} ${styles.navResponsive}`}>
@@ -154,6 +153,21 @@ const Navbar: React.FC<Props> = ({}) => {
                   <FontAwesomeIcon icon={faPenToSquare} /> Display
                 </a>
               </li>
+              <li>
+                <a
+                  onClick={() => {
+                    setOpenModal(false);
+                    setOpenModalInfo(true);
+                  }}
+                >
+                  <FontAwesomeIcon icon={faCircleInfo} /> Info
+                </a>
+              </li>
+              <li>
+                <a onClick={logout}>
+                  <FontAwesomeIcon icon={faArrowRightFromBracket} /> Logout
+                </a>
+              </li>
             </ul>
           }
           footer={<button className={`primary ${styles.doneBtn}`}>Done</button>}
@@ -162,10 +176,55 @@ const Navbar: React.FC<Props> = ({}) => {
       )}
       {openModalDisplay && (
         <Modal
-          title="Display"
-          content={"A"}
-          footer={<button className={`primary ${styles.doneBtn}`}>Done</button>}
+          title="Display - Light/Dark mode"
+          content={<ToggleMode />}
+          footer={
+            <button
+              onClick={() => {
+                setOpenModalDisplay(false);
+                setOpenModal(true);
+              }}
+              className={`primary ${styles.doneBtn}`}
+            >
+              Done
+            </button>
+          }
           closeModal={setOpenModalDisplay}
+        />
+      )}
+      {openModalInfo && (
+        <Modal
+          title="Info"
+          content={
+            <div>
+              <strong>honestly, slay</strong> is a social network made by a drag
+              queen, for drag queens. <br /> Its scope is to promote italian's
+              drag art. <br />
+              <br />
+              Made by{" "}
+              <a className={styles.info} href="https://fabiogrimaldi.dev/">
+                Fabio Grimaldi{" "}
+              </a>
+              <a
+                className={styles.info}
+                href="https://www.instagram.com/angeli.que__/"
+              >
+                (Angeli Que)
+              </a>
+            </div>
+          }
+          footer={
+            <button
+              onClick={() => {
+                setOpenModalInfo(false);
+                setOpenModal(true);
+              }}
+              className={`primary ${styles.doneBtn}`}
+            >
+              Done
+            </button>
+          }
+          closeModal={setOpenModalInfo}
         />
       )}
     </>

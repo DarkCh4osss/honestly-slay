@@ -23,6 +23,7 @@ const Profile: React.FC<Props> = ({ profile }) => {
   const [newBio, setNewBio] = useState("");
   const [newLoc, setNewLoc] = useState("");
   const [newCover, setNewCover] = useState("");
+  const [newPfp, setNewPfp] = useState("");
 
   const [openModal, setOpenModal] = useState(false);
 
@@ -59,26 +60,32 @@ const Profile: React.FC<Props> = ({ profile }) => {
       });
   }
 
-  async function updateCover(ev: any) {
+  async function updateCover(ev: any, storage: string, profileColumn: string) {
     const file = ev.target.files?.[0];
     if (file) {
       const newName = Date.now() + file.name;
       const { data, error } = await supabase.storage
-        .from("covers")
+        .from(storage)
         .upload(newName, file);
 
       if (data) {
         const url =
           process.env.NEXT_PUBLIC_SUPABASE_URL +
-          "/storage/v1/object/public/covers/" +
+          `/storage/v1/object/public/${storage}/` +
           data.path;
         supabase
           .from("profiles")
-          .update({ cover_img: url })
+          .update({ [profileColumn]: url })
           .eq("id", session?.user.id)
           .then((res) => {
             if (!res.error) {
-              // window.location.reload();
+              let img = document.getElementById(storage) as HTMLImageElement;
+              if (storage === "covers") {
+                console.log(newCover);
+                img!.src = url;
+              } else if (storage === "avatars") {
+                img!.src = url;
+              }
             }
           });
       }
@@ -95,6 +102,8 @@ const Profile: React.FC<Props> = ({ profile }) => {
   }, [openModal]);
 
   const isMyUser = profile?.id === session?.user?.id;
+
+  console.log(isMyUser, session?.user.id, profile?.id);
 
   return (
     <>
@@ -126,6 +135,7 @@ const Profile: React.FC<Props> = ({ profile }) => {
           <button
             onClick={() => setOpenModal(true)}
             className={isMyUser ? styles.editBtn : styles.editBtnNo}
+            disabled={isMyUser ? false : true}
           >
             Edit Profile
           </button>
@@ -152,8 +162,9 @@ const Profile: React.FC<Props> = ({ profile }) => {
               <div className={styles.bannerEditContainer}>
                 <div className={styles.bannerWrap}>
                   <img
+                    id="covers"
                     className={styles.profileBannerEdit}
-                    src={newCover ? newCover : profile?.cover_img}
+                    src={profile?.cover_img}
                     alt="Profile Banner"
                   />
                   <div className={styles.bannerOverlay}>
@@ -169,7 +180,7 @@ const Profile: React.FC<Props> = ({ profile }) => {
                             accept="image/*"
                             onChange={(e) => {
                               setNewCover(e.target.src);
-                              updateCover(e);
+                              updateCover(e, "covers", "cover_img");
                             }}
                           />
                         </label>
@@ -184,15 +195,27 @@ const Profile: React.FC<Props> = ({ profile }) => {
               <div className={styles.profileAvatarSectEdit}>
                 <div className={styles.avatarWrap}>
                   <img
+                    id="avatars"
                     src={profile?.avatar_url}
                     alt=""
                     className={styles.profileAvatarEdit}
                   />
                   <div className={styles.avatarOverlay}>
                     <ul>
-                      <li>
+                      <label htmlFor="addPhotoAv">
                         <FontAwesomeIcon icon={faImages} />
-                      </li>
+                        <input
+                          id="addPhotoAv"
+                          multiple
+                          type="file"
+                          className="hidden"
+                          accept="image/*"
+                          onChange={(e) => {
+                            setNewPfp(e.target.src);
+                            updateCover(e, "avatars", "avatar_url");
+                          }}
+                        />
+                      </label>
                     </ul>
                   </div>
                 </div>

@@ -1,12 +1,22 @@
 :root {
   --primary: #ffafcc;
-  --bg: #e7e7e8;
+  --bg: #fff;
   --primary-hover: #fd94bb;
   --primary-disabled: #cd7e9b;
   --border-color: #dcd4d4;
   --like-hover: #fee7f2;
   --share-hover: #baf8a0;
   --comment-hover: #a0c3fb;
+  --font: #000000;
+  --input: #000;
+  --hover: #e7e7e8;
+}
+
+[data-theme="dark"] {
+  --bg: #000;
+  --font: #fff;
+  --input: #fff;
+  --hover: #181818;
 }
 
 * {
@@ -20,10 +30,12 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   font-family: Poppins;
+  background: var(--bg);
+  color: var(--font);
 }
 
 a {
-  color: inherit;
+  color: var(--font);
   text-decoration: none;
   cursor: pointer;
 }
