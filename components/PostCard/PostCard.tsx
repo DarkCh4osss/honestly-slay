@@ -27,6 +27,7 @@ interface Props {
   created_at: any;
   profiles: any;
   photos: any;
+  onDelete: Function;
 }
 
 const PostCard: React.FC<Props> = ({
@@ -35,6 +36,7 @@ const PostCard: React.FC<Props> = ({
   created_at,
   photos,
   profiles: profile,
+  onDelete,
 }) => {
   // const { profile: myProfile } = useContext(UserContext);
   const [openModal, setOpenModal] = useState(false);
@@ -48,6 +50,8 @@ const PostCard: React.FC<Props> = ({
   const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState<any>();
   const [isSaved, setIsSaved] = useState(false);
+
+  const isMyPost = profile?.id === myProfile?.id ? true : false;
 
   const supabase = useSupabaseClient();
   const session = useSession();
@@ -170,6 +174,17 @@ const PostCard: React.FC<Props> = ({
           setIsSaved(true);
         });
     }
+  }
+
+  function deletePost() {
+    supabase
+      .from("posts")
+      .delete()
+      .eq("id", id)
+      .then((res) => {
+        alert("This post has been deleted.");
+        onDelete();
+      });
   }
 
   return (
@@ -316,11 +331,13 @@ const PostCard: React.FC<Props> = ({
                   {isSaved ? "Remove from saved" : "Save post"}
                 </a>
               </li>
-              <li>
-                <a>
-                  <FontAwesomeIcon icon={faTrash} /> Delete post
-                </a>
-              </li>
+              {isMyPost && (
+                <li>
+                  <a onClick={deletePost}>
+                    <FontAwesomeIcon icon={faTrash} /> Delete post
+                  </a>
+                </li>
+              )}
               <li>
                 <a>
                   <FontAwesomeIcon icon={faTriangleExclamation} /> Report
